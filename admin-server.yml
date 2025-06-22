@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: admin-server
+  boot:
+    admin:
+      context-path: /admin
+    client:
+      period: 10000
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false

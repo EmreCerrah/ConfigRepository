@@ -1,0 +1,31 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: auth-service
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080/admin
+        instance:
+          prefer-ip: true
+          metadata:
+            name: Authentication Service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#  api-docs:
+#    path: /v3/api-docs

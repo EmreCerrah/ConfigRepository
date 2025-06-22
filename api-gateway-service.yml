@@ -1,19 +1,41 @@
 server:
-  port: 9090
+  port: 1080
 
 spring:
   application:
     name: api-gateway-service
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8080/admin
+#        instance:
+#          metadata:
+#            name: Gateway Service
   main:
     web-application-type: reactive
   cloud:
     gateway:
       routes:
-        - id: product-service
-          uri: http://localhost:8081
+        - id: auth-service
+          uri: http://localhost:9090
           predicates:
-            - Path=/products/**
-        - id: user-service
-          uri: http://localhost:8082
-          predicates:
-            - Path=/users/**
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/(?<segment>.*), /${segment}
+#            - name: CircuitBreaker
+#              args:
+#                name: auth
+#                fallbackUri: forward:/fallback/auth
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: auth-service
+        url: /auth/v3/api-docs
+    configUrl: /v3/api-docs/swagger-config
