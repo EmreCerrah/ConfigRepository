@@ -36,6 +36,12 @@ jwt:
   secret: your-secret-key
   expiration: 3600000 # 1 saat
 
+logging:
+  level:
+    org.springframework: DEBUG
+    org.hibernate: DEBUG
+    org.springframework.orm.jpa: DEBUG
+
 #springdoc:
 #  swagger-ui:
 #    path: /swagger-ui.html
