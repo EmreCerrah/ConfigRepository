@@ -11,11 +11,15 @@ spring:
       period: 10000
 
   cloud:
+    config:
+          enabled: false
+
     consul:
       host: localhost
       port: 8500
       discovery:
         prefer-ip-address: true
+
 
 
 management:
