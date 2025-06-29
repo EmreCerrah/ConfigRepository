@@ -41,3 +41,13 @@ spring:
 jwt:
   secret: your-secret-key
   expiration: 3600000 # 1 saat
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
