@@ -6,21 +6,13 @@ spring:
     name: admin-server
   boot:
     admin:
+      discovery:
+        enabled: true
       context-path: /admin
-    client:
-      period: 10000
 
   cloud:
     config:
-          enabled: false
-
-    consul:
-      host: localhost
-      port: 8500
-      discovery:
-        prefer-ip-address: true
-
-
+      enabled: false
 
 management:
   endpoints:
