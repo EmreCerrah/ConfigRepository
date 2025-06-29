@@ -1,9 +1,15 @@
 server:
-  port: 9099
+  port: 9090
 
 spring:
+  application:
+    name: auth-service
+  cloud:
+    consul:
+      discovery:
+        service-name: ${spring.application.name}
   datasource:
-    url: jdbc:postgresql://localhost:5432/userdb
+    url: jdbc:postgresql://172.19.0.2:5432/userdb
     username: user
     password: password
   jpa:
@@ -35,15 +41,3 @@ spring:
 jwt:
   secret: your-secret-key
   expiration: 3600000 # 1 saat
-
-logging:
-  level:
-    org.springframework: DEBUG
-    org.hibernate: DEBUG
-    org.springframework.orm.jpa: DEBUG
-
-#springdoc:
-#  swagger-ui:
-#    path: /swagger-ui.html
-#  api-docs:
-#    path: /v3/api-docs
