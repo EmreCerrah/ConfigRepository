@@ -10,10 +10,6 @@ spring:
         enabled: true
       context-path: /admin
 
-  cloud:
-    config:
-      enabled: false
-
 management:
   endpoints:
     web:
